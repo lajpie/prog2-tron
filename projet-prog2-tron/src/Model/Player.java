@@ -6,13 +6,15 @@ import java.awt.*;
 public class Player extends Tile{
 
     private Color trailColor;
+    private Color color;
     private int velocityX =0;
     private int velocityY =0;
 
 
-    public Player(int x, int y, Color color){
+    public Player(int x, int y, Color color, Color trailColor){
         super(x,y);
-        trailColor = color;
+        this.color = color;
+        this.trailColor = trailColor;
     }
 
     public Color getTrailColor() {
@@ -34,4 +36,9 @@ public class Player extends Tile{
     public void setVelocityY(int velocityY) {
         this.velocityY = velocityY;
     }
+
+    public Color getColor() {
+        return color;
+    }
+
 }

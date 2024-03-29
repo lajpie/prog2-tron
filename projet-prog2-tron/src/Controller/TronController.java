@@ -24,7 +24,12 @@ public class TronController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         gameView.updateGame();
+
+        if(gameView.isGameOver()){
+            gameLoop.stop();
+            System.out.println("game over");
+        }
+
     }
 }

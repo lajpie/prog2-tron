@@ -18,8 +18,9 @@ public class Main {
         TronGame tronGame = new TronGame(gridWidth,gridHeight);
         frame.add(tronGame);
         frame.pack();
-
+        tronGame.requestFocus();
         TronController tronController = new TronController(tronGame);
+
 
     }
 
