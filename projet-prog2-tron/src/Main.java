@@ -1,3 +1,4 @@
+import Controller.TronController;
 import View.TronGame;
 
 import javax.swing.*;
@@ -17,6 +18,8 @@ public class Main {
         TronGame tronGame = new TronGame(gridWidth,gridHeight);
         frame.add(tronGame);
         frame.pack();
+
+
     }
 
 
