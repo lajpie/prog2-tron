@@ -1,24 +1,24 @@
-import Model.GridPane;
+import View.TronGame;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Main {
-    public static void main(String[] args) {
-        new Main();
+    public static void main(String[] args) throws Exception{
+        int gridWidth = 800;
+        int gridHeight = gridWidth;
+
+        JFrame frame = new JFrame("Tron");
+        frame.setVisible(true);
+        frame.setSize(gridWidth,gridHeight);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        TronGame tronGame = new TronGame(gridWidth,gridHeight);
+        frame.add(tronGame);
+        frame.pack();
     }
 
-    public Main(){
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                JFrame frame = new JFrame();
-                frame.add(new GridPane());
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);
-            }
-        });
-    }
+
 
 }
