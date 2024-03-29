@@ -22,6 +22,8 @@ public class MainMenu extends JPanel {
         quickPlay = new JButton("Quick Play");
         bestOf3 = new JButton("Best of 3");
 
+
+        //TODO:afficher titre ou un beau menu
         this.add(quickPlay);
         this.add(bestOf3);
 

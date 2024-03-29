@@ -230,6 +230,8 @@ public class TronGame extends JPanel implements KeyListener {
             }
         }
 
+        //Vérifie les collision et les pv restants
+        //TODO: afficher lives
         if(player1.getLives()<=0 || player2.getLives()<=0){
             gameOver =true;
         } else if ( uneCollision && (player1.getLives()>=1 || player2.getLives()>=1)) {

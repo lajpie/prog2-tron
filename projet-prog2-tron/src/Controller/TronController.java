@@ -33,6 +33,7 @@ public class TronController implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         gameView.updateGame();
 
+        //TODO: afficher gagnant
         if(gameView.isGameOver()){
             gameLoop.stop();
             System.out.println("game over");
