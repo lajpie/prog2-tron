@@ -26,6 +26,7 @@ public class TronController implements ActionListener {
         menuView.requestFocus();
 
         menuView.setQuickPlayListener(new QuickPlayListener());
+        menuView.setBestOf3Listener(new BestOf3Listener());
     }
 
     @Override
@@ -77,6 +78,16 @@ public class TronController implements ActionListener {
             gameView.setVisible(true);
             gameView.requestFocus();
             chooseGameMode(1);
+        }
+    }
+
+    class BestOf3Listener implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            menuView.setVisible(false);
+            gameView.setVisible(true);
+            gameView.requestFocus();
+            chooseGameMode(3);
         }
     }
 

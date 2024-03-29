@@ -38,6 +38,8 @@ public class TronGame extends JPanel implements KeyListener {
         setPreferredSize(new Dimension(this.gridWidth,this.gridHeight));
         setBackground(Color.BLACK);
 
+        player1 = new Player(5,5,Color.YELLOW,Color.ORANGE);
+        player2 = new Player(26,26,Color.BLUE,Color.CYAN);
         restartGame();
 
         for (int i = 0; i < gridWidth/tileSize; i++){
@@ -184,6 +186,7 @@ public class TronGame extends JPanel implements KeyListener {
 
     public boolean isGameOver(){
 
+        boolean uneCollision = false;
 
         //vérifie les murs
         for (int i = 0; i<murs.size();i++){
@@ -191,9 +194,11 @@ public class TronGame extends JPanel implements KeyListener {
 
             if(player1.collision(mur)){
                 player1.setLives(player1.getLives() -1);
+                uneCollision = true;
             }
             if(player2.collision(mur)){
                 player2.setLives(player2.getLives() -1);
+                uneCollision = true;
             }
         }
 
@@ -203,9 +208,11 @@ public class TronGame extends JPanel implements KeyListener {
 
             if(player1.collision(mur)){
                 player1.setLives(player1.getLives() -1);
+                uneCollision = true;
             }
             if(player2.collision(mur)){
                 player2.setLives(player2.getLives() -1);
+                uneCollision = true;
             }
         }
 
@@ -215,24 +222,32 @@ public class TronGame extends JPanel implements KeyListener {
 
             if(player1.collision(mur)){
                 player1.setLives(player1.getLives() -1);
+                uneCollision = true;
             }
             if(player2.collision(mur)){
                 player2.setLives(player2.getLives() -1);
+                uneCollision = true;
             }
         }
 
         if(player1.getLives()<=0 || player2.getLives()<=0){
             gameOver =true;
+        } else if ( uneCollision && (player1.getLives()>=1 || player2.getLives()>=1)) {
+            restartGame();
         }
         return gameOver;
     }
 
     public void restartGame(){
-        player1 = new Player(5,5,Color.orange, Color.yellow);
+        player1.setX(5);
+        player1.setY(5);
         player1.setVelocityY(1);
+        player1.setVelocityX(0);
 
-        player2 = new Player(26,26,Color.blue, Color.cyan);
+        player2.setX(26);
+        player2.setY(26);
         player2.setVelocityY(-1);
+        player2.setVelocityX(0);
 
         player1Trail = new ArrayList<Tile>();
         player2Trail = new ArrayList<Tile>();
