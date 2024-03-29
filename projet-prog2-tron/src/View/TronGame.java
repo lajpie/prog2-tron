@@ -188,8 +188,37 @@ public class TronGame extends JPanel implements KeyListener {
 
     public boolean isGameOver(){
 
+        //vérifie les murs
+        for (int i = 0; i<murs.size();i++){
+            Tile mur = murs.get(i);
 
+            if(collision(player1, mur) || collision(player2, mur)){
+                gameOver = true;
+            }
+        }
+
+        //vérifie la player1Trail
+        for (int i = 0; i<player1Trail.size();i++){
+            Tile mur = player1Trail.get(i);
+
+            if(collision(player1, mur) || collision(player2, mur)){
+                gameOver = true;
+            }
+        }
+
+        //vérifie la player2Trail
+        for (int i = 0; i<player2Trail.size();i++){
+            Tile mur = player2Trail.get(i);
+
+            if(collision(player1, mur) || collision(player2, mur)){
+                gameOver = true;
+            }
+        }
 
         return gameOver;
+    }
+
+    public boolean collision(Tile tile1, Tile tile2) {
+        return tile1.getX() == tile2.getX() && tile1.getY() == tile2.getY();
     }
 }
