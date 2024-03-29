@@ -1,4 +1,5 @@
 import Controller.TronController;
+import View.MainMenu;
 import View.TronGame;
 
 import javax.swing.*;
@@ -19,7 +20,13 @@ public class Main {
         frame.add(tronGame);
         frame.pack();
         tronGame.requestFocus();
-        TronController tronController = new TronController(tronGame);
+
+        MainMenu mainMenu = new MainMenu(gridWidth,gridHeight);
+        frame.add(mainMenu);
+        frame.pack();
+        mainMenu.requestFocus();
+
+        TronController tronController = new TronController(tronGame, mainMenu);
 
 
     }

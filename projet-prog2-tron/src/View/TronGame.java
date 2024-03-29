@@ -192,7 +192,7 @@ public class TronGame extends JPanel implements KeyListener {
         for (int i = 0; i<murs.size();i++){
             Tile mur = murs.get(i);
 
-            if(collision(player1, mur) || collision(player2, mur)){
+            if(player1.collision(mur) || player2.collision(mur)){
                 gameOver = true;
             }
         }
@@ -201,7 +201,7 @@ public class TronGame extends JPanel implements KeyListener {
         for (int i = 0; i<player1Trail.size();i++){
             Tile mur = player1Trail.get(i);
 
-            if(collision(player1, mur) || collision(player2, mur)){
+            if(player1.collision(mur) || player2.collision(mur)){
                 gameOver = true;
             }
         }
@@ -210,7 +210,7 @@ public class TronGame extends JPanel implements KeyListener {
         for (int i = 0; i<player2Trail.size();i++){
             Tile mur = player2Trail.get(i);
 
-            if(collision(player1, mur) || collision(player2, mur)){
+            if(player1.collision(mur) || player2.collision(mur)){
                 gameOver = true;
             }
         }
@@ -218,7 +218,18 @@ public class TronGame extends JPanel implements KeyListener {
         return gameOver;
     }
 
-    public boolean collision(Tile tile1, Tile tile2) {
-        return tile1.getX() == tile2.getX() && tile1.getY() == tile2.getY();
+    public void restartGame(){
+        player1 = new Player(5,5,Color.orange, Color.yellow);
+        player1.setVelocityY(1);
+
+        player2 = new Player(26,26,Color.blue, Color.cyan);
+        player2.setVelocityY(-1);
+
+        player1Trail = new ArrayList<Tile>();
+        player2Trail = new ArrayList<Tile>();
+
+        gameOver = false;
     }
+
+
 }

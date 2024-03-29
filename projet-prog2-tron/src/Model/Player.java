@@ -41,4 +41,8 @@ public class Player extends Tile{
         return color;
     }
 
+    public boolean collision(Tile tile) {
+        return this.getX() == tile.getX() && this.getY() == tile.getY();
+    }
+
 }
