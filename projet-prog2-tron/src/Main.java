@@ -19,6 +19,7 @@ public class Main {
         frame.add(tronGame);
         frame.pack();
 
+        TronController tronController = new TronController(tronGame);
 
     }
 

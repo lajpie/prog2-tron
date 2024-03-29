@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class TronGame extends JPanel {
+public class TronGame extends JPanel{
 
     //Grid and tile size
     int gridWidth;
@@ -28,7 +28,10 @@ public class TronGame extends JPanel {
         setBackground(Color.BLACK);
 
         player1 = new Player(5,5,Color.YELLOW);
+        player1.setVelocityY(1);
+
         player2 = new Player(26,26,Color.BLUE);
+        player2.setVelocityY(-1);
 
         for (int i = 0; i < gridWidth/tileSize; i++){
             murs.add(new Tile(i,0));
@@ -69,4 +72,19 @@ public class TronGame extends JPanel {
 
 
     }
+
+    public void move() {
+        player1.setX(player1.getX() + player1.getVelocityX());
+        player1.setY(player1.getY() + player1.getVelocityY());
+
+        player2.setX(player2.getX() + player2.getVelocityX());
+        player2.setY(player2.getY() + player2.getVelocityY());
+    }
+
+    public void updateGame(){
+        move();
+        repaint();
+    }
+
+
 }
