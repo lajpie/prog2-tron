@@ -10,6 +10,7 @@ public class Player extends Tile{
     private int velocityX =0;
     private int velocityY =0;
 
+    private int lives;
 
     public Player(int x, int y, Color color, Color trailColor){
         super(x,y);
@@ -45,4 +46,11 @@ public class Player extends Tile{
         return this.getX() == tile.getX() && this.getY() == tile.getY();
     }
 
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
+
+    public int getLives(){
+        return lives;
+    }
 }

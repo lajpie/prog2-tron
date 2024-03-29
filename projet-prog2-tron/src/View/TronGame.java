@@ -38,11 +38,7 @@ public class TronGame extends JPanel implements KeyListener {
         setPreferredSize(new Dimension(this.gridWidth,this.gridHeight));
         setBackground(Color.BLACK);
 
-        player1 = new Player(5,5,Color.orange, Color.yellow);
-        player1.setVelocityY(1);
-
-        player2 = new Player(26,26,Color.blue, Color.cyan);
-        player2.setVelocityY(-1);
+        restartGame();
 
         for (int i = 0; i < gridWidth/tileSize; i++){
             murs.add(new Tile(i,0));
@@ -188,12 +184,16 @@ public class TronGame extends JPanel implements KeyListener {
 
     public boolean isGameOver(){
 
+
         //vérifie les murs
         for (int i = 0; i<murs.size();i++){
             Tile mur = murs.get(i);
 
-            if(player1.collision(mur) || player2.collision(mur)){
-                gameOver = true;
+            if(player1.collision(mur)){
+                player1.setLives(player1.getLives() -1);
+            }
+            if(player2.collision(mur)){
+                player2.setLives(player2.getLives() -1);
             }
         }
 
@@ -201,8 +201,11 @@ public class TronGame extends JPanel implements KeyListener {
         for (int i = 0; i<player1Trail.size();i++){
             Tile mur = player1Trail.get(i);
 
-            if(player1.collision(mur) || player2.collision(mur)){
-                gameOver = true;
+            if(player1.collision(mur)){
+                player1.setLives(player1.getLives() -1);
+            }
+            if(player2.collision(mur)){
+                player2.setLives(player2.getLives() -1);
             }
         }
 
@@ -210,11 +213,17 @@ public class TronGame extends JPanel implements KeyListener {
         for (int i = 0; i<player2Trail.size();i++){
             Tile mur = player2Trail.get(i);
 
-            if(player1.collision(mur) || player2.collision(mur)){
-                gameOver = true;
+            if(player1.collision(mur)){
+                player1.setLives(player1.getLives() -1);
+            }
+            if(player2.collision(mur)){
+                player2.setLives(player2.getLives() -1);
             }
         }
 
+        if(player1.getLives()<=0 || player2.getLives()<=0){
+            gameOver =true;
+        }
         return gameOver;
     }
 
@@ -229,6 +238,11 @@ public class TronGame extends JPanel implements KeyListener {
         player2Trail = new ArrayList<Tile>();
 
         gameOver = false;
+    }
+
+    public void setGameLives(int l){
+        player1.setLives(l);
+        player2.setLives(l);
     }
 
 

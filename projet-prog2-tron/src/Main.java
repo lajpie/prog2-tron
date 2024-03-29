@@ -27,8 +27,6 @@ public class Main {
         mainMenu.requestFocus();
 
         TronController tronController = new TronController(tronGame, mainMenu);
-
-
     }
 
 

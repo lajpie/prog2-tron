@@ -15,6 +15,7 @@ public class TronController implements ActionListener {
     //logic
     Timer gameLoop;
     Object[] endOfGameOptions = {"yes", "no"};
+    int gameMode = 1;
 
     public TronController(TronGame view, MainMenu menuView){
         gameView = view;
@@ -47,10 +48,8 @@ public class TronController implements ActionListener {
             );
 
             if(choice==JOptionPane.YES_OPTION){
-                gameView.restartGame();
-                startGame();
+                chooseGameMode(gameMode);
             } else {
-                gameView.restartGame();
                 gameView.setVisible(false);
                 menuView.setVisible(true);
                 menuView.requestFocus();
@@ -64,13 +63,20 @@ public class TronController implements ActionListener {
         gameLoop.start();
     }
 
+    private void chooseGameMode(int gameMode){
+        this.gameMode = gameMode;
+        gameView.restartGame();
+        gameView.setGameLives(this.gameMode);
+        startGame();
+    }
+
     class QuickPlayListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
             menuView.setVisible(false);
             gameView.setVisible(true);
             gameView.requestFocus();
-            startGame();
+            chooseGameMode(1);
         }
     }
 
