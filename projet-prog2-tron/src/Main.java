@@ -18,7 +18,7 @@ public class Main {
 
         TronGame tronGame = new TronGame(gridWidth,gridHeight);
         frame.add(tronGame);
-        frame.pack();
+        frame.pack(); 
         tronGame.requestFocus();
 
         MainMenu mainMenu = new MainMenu(gridWidth,gridHeight);
