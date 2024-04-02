@@ -1,6 +1,7 @@
 import Controller.TronController;
 import View.MainMenu;
-import View.TronGame;
+import Model.TronGame;
+import View.TronView;
 
 import javax.swing.*;
 
@@ -17,16 +18,16 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         TronGame tronGame = new TronGame(gridWidth,gridHeight);
-        frame.add(tronGame);
-        frame.pack(); 
-        tronGame.requestFocus();
+        TronView tronView = new TronView(tronGame);
+        frame.add(tronView);
+        frame.pack();
 
         MainMenu mainMenu = new MainMenu(gridWidth,gridHeight);
         frame.add(mainMenu);
         frame.pack();
         mainMenu.requestFocus();
 
-        TronController tronController = new TronController(tronGame, mainMenu);
+        TronController tronController = new TronController(tronGame, mainMenu,tronView);
     }
 
 
