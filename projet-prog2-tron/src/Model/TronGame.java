@@ -145,6 +145,16 @@ public class TronGame {
             }
         }
 
+        if(player1.collision(player2)){
+            player1.setLives(player1.getLives() -1);
+            uneCollision = true;
+        }
+        if(player2.collision(player1)){
+            player2.setLives(player2.getLives() -1);
+            uneCollision = true;
+        }
+
+
         //Vérifie les collision et les pv restants
         //TODO: afficher lives
         if(player1.getLives()<=0 || player2.getLives()<=0){

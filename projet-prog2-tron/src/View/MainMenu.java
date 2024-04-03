@@ -12,20 +12,37 @@ public class MainMenu extends JPanel {
     private final int gridHeight;
 
     private JButton quickPlay, bestOf3;
+    private JLabel menuTitle;
 
     public MainMenu(int gridWidth, int gridHeight){
         this.gridWidth = gridWidth;
         this.gridHeight = gridHeight;
         setPreferredSize(new Dimension(this.gridWidth,this.gridHeight));
         setBackground(Color.BLACK);
+        setLayout(new GridBagLayout());
 
+        GridBagConstraints grid = new GridBagConstraints();
+        grid.gridwidth = GridBagConstraints.REMAINDER;
+        grid.anchor = GridBagConstraints.NORTH;
+        
+
+        menuTitle = new JLabel("Tron");
+        menuTitle.setForeground(Color.CYAN);
+        menuTitle.setFont(new Font("Futura",Font.ITALIC+Font.BOLD,100));
         quickPlay = new JButton("Quick Play");
         bestOf3 = new JButton("Best of 3");
+  
 
 
         //TODO:afficher titre ou un beau menu
-        this.add(quickPlay);
-        this.add(bestOf3);
+        this.add(menuTitle,grid);
+
+        grid.anchor = GridBagConstraints.CENTER;
+        grid.fill = GridBagConstraints.HORIZONTAL;
+
+        this.add(quickPlay,grid);
+        this.add(bestOf3,grid);
+        grid.weighty = 1;
 
     }
 

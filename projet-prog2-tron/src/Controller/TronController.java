@@ -40,11 +40,11 @@ public class TronController implements ActionListener, KeyListener {
         this.menuView.setQuickPlayListener(new QuickPlayListener());
         this.menuView.setBestOf3Listener(new BestOf3Listener());
 
-
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        pressedKeys.clear();
         tronGame.updateGame();
         gameView.repaint();
 

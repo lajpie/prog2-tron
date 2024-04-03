@@ -40,6 +40,7 @@ public class TronView extends JPanel {
         tronGame.getMurs().forEach((m) -> g.fillRect(m.getX() * tronGame.getTileSize(), m.getY() * tronGame.getTileSize(), tronGame.getTileSize(),tronGame.getTileSize()));
 
         g.setFont(new Font("Arial",Font.BOLD,20));
+        
 
         //player 1
         g.setColor(tronGame.getPlayer1().getColor());

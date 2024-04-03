@@ -3,6 +3,8 @@ import View.MainMenu;
 import Model.TronGame;
 import View.TronView;
 
+import java.awt.GridBagLayout;
+
 import javax.swing.*;
 
 public class Main {
@@ -16,6 +18,8 @@ public class Main {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  
+
 
         TronGame tronGame = new TronGame(gridWidth,gridHeight);
         TronView tronView = new TronView(tronGame);
