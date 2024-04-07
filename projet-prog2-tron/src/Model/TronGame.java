@@ -86,13 +86,6 @@ public class TronGame {
     }
 
 
-    public void updateGame(){
-        move();
-    }
-
-
-
-
     public boolean isGameOver(){
 
         boolean uneCollision = false;

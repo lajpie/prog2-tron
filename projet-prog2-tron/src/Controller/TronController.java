@@ -45,7 +45,7 @@ public class TronController implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         pressedKeys.clear();
-        tronGame.updateGame();
+        tronGame.move();
         gameView.repaint();
 
         //TODO: afficher gagnant

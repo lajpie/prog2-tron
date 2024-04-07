@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="projet-prog2-tron:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/projet_prog2_tron_jar</output-path>
+    <root id="archive" name="projet-prog2-tron.jar">
+      <element id="module-output" name="projet-prog2-tron" />
+    </root>
+  </artifact>
+</component>
