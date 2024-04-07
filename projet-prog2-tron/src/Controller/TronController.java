@@ -50,13 +50,14 @@ public class TronController implements ActionListener, KeyListener {
 
         //TODO: afficher gagnant
         if(tronGame.isGameOver()){
+
             gameLoop.stop();
             System.out.println("game over");
 
             int choice = JOptionPane.showOptionDialog(
                     null,
                     "Play Again?",
-                    "GAME OVER",
+                    "GAME OVER "+tronGame.getWinner(),
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE,
                     null,

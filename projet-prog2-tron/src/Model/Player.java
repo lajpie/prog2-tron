@@ -2,6 +2,7 @@ package Model;
 
 import javax.swing.text.Position;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Player extends Tile{
 
@@ -9,13 +10,15 @@ public class Player extends Tile{
     private Color color;
     private int velocityX =0;
     private int velocityY =0;
-
     private int lives;
+
+    private ArrayList<Tile> trail;
 
     public Player(int x, int y, Color color, Color trailColor){
         super(x,y);
         this.color = color;
         this.trailColor = trailColor;
+        this.trail = new ArrayList<Tile>();
     }
 
     public Color getTrailColor() {
@@ -52,5 +55,17 @@ public class Player extends Tile{
 
     public int getLives(){
         return lives;
+    }
+
+    public ArrayList<Tile> getTrail() {
+        return trail;
+    }
+
+    public void addToTrail(Tile tile){
+        trail.add(tile);
+    }
+
+    public void resetTrail(){
+        trail = new ArrayList<Tile>();
     }
 }

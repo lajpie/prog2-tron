@@ -21,10 +21,8 @@ public class TronGame {
     Player player1;
     Player player2;
     ArrayList<Tile> murs = new ArrayList<Tile>();
-    ArrayList<Tile> player1Trail = new ArrayList<Tile>();
-    ArrayList<Tile> player2Trail = new ArrayList<Tile>();
 
-
+    String winner;
 
     //etat
     boolean gameOver = false;
@@ -72,20 +70,16 @@ public class TronGame {
         return murs;
     }
 
-    public ArrayList<Tile> getPlayer1Trail() {
-        return player1Trail;
-    }
-
-    public ArrayList<Tile> getPlayer2Trail() {
-        return player2Trail;
+    public String getWinner(){
+        return winner;
     }
 
     public void move() {
-        player1Trail.add(new Tile(player1.getX(), player1.getY()));
+        player1.addToTrail(new Tile(player1.getX(), player1.getY()));
         player1.setX(player1.getX() + player1.getVelocityX());
         player1.setY(player1.getY() + player1.getVelocityY());
 
-        player2Trail.add(new Tile(player2.getX(), player2.getY()));
+        player2.addToTrail(new Tile(player2.getX(), player2.getY()));
         player2.setX(player2.getX() + player2.getVelocityX());
         player2.setY(player2.getY() + player2.getVelocityY());
 
@@ -117,9 +111,9 @@ public class TronGame {
             }
         }
 
-        //vérifie la player1Trail
-        for (int i = 0; i<player1Trail.size();i++){
-            Tile mur = player1Trail.get(i);
+        //vérifie la player1 Trail
+        for (int i = 0; i<player1.getTrail().size();i++){
+            Tile mur = player1.getTrail().get(i);
 
             if(player1.collision(mur)){
                 player1.setLives(player1.getLives() -1);
@@ -132,8 +126,8 @@ public class TronGame {
         }
 
         //vérifie la player2Trail
-        for (int i = 0; i<player2Trail.size();i++){
-            Tile mur = player2Trail.get(i);
+        for (int i = 0; i<player2.getTrail().size();i++){
+            Tile mur = player2.getTrail().get(i);
 
             if(player1.collision(mur)){
                 player1.setLives(player1.getLives() -1);
@@ -156,9 +150,15 @@ public class TronGame {
 
 
         //Vérifie les collision et les pv restants
-        //TODO: afficher lives
-        if(player1.getLives()<=0 || player2.getLives()<=0){
-            gameOver =true;
+        if(player1.getLives()<=0 && player2.getLives()<=0) {
+            gameOver = true;
+            winner = "The match is a draw!";
+        } else if (player1.getLives()<=0 && player2.getLives()>0) {
+            gameOver = true;
+            winner = "Player 2 wins!";
+        }else if (player1.getLives()>0 && player2.getLives()<=0) {
+            gameOver = true;
+            winner = "Player 1 wins!";
         } else if ( uneCollision && (player1.getLives()>=1 || player2.getLives()>=1)) {
             restartGame();
         }
@@ -176,8 +176,8 @@ public class TronGame {
         player2.setVelocityY(-1);
         player2.setVelocityX(0);
 
-        player1Trail = new ArrayList<Tile>();
-        player2Trail = new ArrayList<Tile>();
+        player1.resetTrail();
+        player2.resetTrail();
 
         gameOver = false;
     }

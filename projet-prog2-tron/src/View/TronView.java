@@ -44,14 +44,14 @@ public class TronView extends JPanel {
 
         //player 1
         g.setColor(tronGame.getPlayer1().getColor());
-        tronGame.getPlayer1Trail().forEach((m) -> g.fillRect(m.getX() * tronGame.getTileSize(), m.getY() * tronGame.getTileSize(), tronGame.getTileSize(),tronGame.getTileSize()));
+        tronGame.getPlayer1().getTrail().forEach((m) -> g.fillRect(m.getX() * tronGame.getTileSize(), m.getY() * tronGame.getTileSize(), tronGame.getTileSize(),tronGame.getTileSize()));
         g.setColor(tronGame.getPlayer1().getTrailColor());
         g.fillRect(tronGame.getPlayer1().getX() * tronGame.getTileSize(), tronGame.getPlayer1().getY() * tronGame.getTileSize(), tronGame.getTileSize(),tronGame.getTileSize());
         g.drawString("Player 1    Lives:"+tronGame.getPlayer1().getLives(), tronGame.getTileSize(),tronGame.getTileSize() -5);
 
         //player 2
         g.setColor(tronGame.getPlayer2().getColor());
-        tronGame.getPlayer2Trail().forEach((m) -> g.fillRect(m.getX() * tronGame.getTileSize(), m.getY() * tronGame.getTileSize(), tronGame.getTileSize(),tronGame.getTileSize()));
+        tronGame.getPlayer2().getTrail().forEach((m) -> g.fillRect(m.getX() * tronGame.getTileSize(), m.getY() * tronGame.getTileSize(), tronGame.getTileSize(),tronGame.getTileSize()));
         g.setColor(tronGame.getPlayer2().getTrailColor());
         g.fillRect(tronGame.getPlayer2().getX() * tronGame.getTileSize(), tronGame.getPlayer2().getY() * tronGame.getTileSize(), tronGame.getTileSize(),tronGame.getTileSize());
         g.drawString("Player 2    Lives:"+tronGame.getPlayer2().getLives(),tronGame.getGridWidth()- tronGame.getTileSize()*8,tronGame.getGridHeight()-5);
