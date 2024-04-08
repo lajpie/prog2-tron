@@ -34,7 +34,7 @@ public class MainMenu extends JPanel {
   
 
 
-        //TODO:afficher titre ou un beau menu
+        //afficher titre
         this.add(menuTitle,grid);
 
         grid.anchor = GridBagConstraints.CENTER;
