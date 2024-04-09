@@ -132,6 +132,7 @@ public class TronGame {
             }
         }
 
+        //vérifie les têtes
         if(player1.collision(player2)){
             player1.setLives(player1.getLives() -1);
             uneCollision = true;

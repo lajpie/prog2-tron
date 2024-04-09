@@ -48,7 +48,6 @@ public class TronController implements ActionListener, KeyListener {
         tronGame.move();
         gameView.repaint();
 
-        //TODO: afficher gagnant
         if(tronGame.isGameOver()){
 
             gameLoop.stop();
